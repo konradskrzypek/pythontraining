@@ -1,0 +1,12 @@
+Wyobraź sobie, że Data Scientist z którym współpracujesz przekazał Ci następujący kod do treningu modelu.
+Znajduje się on w pliku train.py a dataset do trenowania modelu jest zapisany jako plik data.csv.
+
+Twoim zadaniem jest stworzenie serwisu REST (z wykorzystaniem dobrych praktyk programistycznych) który będzie posiadał następujące funkcjonalności:
+- endpoint służący do otrzymywania predykcji modelu.
+- endpoint do wgrywania nowego datasetu i jego zapis do bazy danych
+- wersjonowanie nowych datasetów
+- endpoint do treningu nowego modelu
+- wersjonowanie modeli
+- konteneryzacja serwisu oraz bazy danych.
+
+Jedynym ograniczeniem co do technologii jest użycie języka Python do stworzenia serwisu. Resztę technologii możesz wybrać dowolnie. Może to być FastApi/Flask + baza danych PostgreSql + Docker czy cokolwiek w czym czujesz się najlepiej. Jeżeli nie zdążysz z implementacją niektórych funkcjonalności, możesz spodziewać się pytań w jaki sposób podszedłbyś do implementacji danej funkcjonalności. Powodzenia!
