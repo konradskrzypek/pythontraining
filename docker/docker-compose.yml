@@ -19,3 +19,11 @@ services:
       PGADMIN_DEFAULT_PASSWORD: root
     ports:
       - "5050:80"
+  backend:
+    image: mlserver/backend
+    depends_on:
+      - db
+    environment:
+      MLSERVER_DB_URL: postgresql://root:root@db:5432/models
+    ports:
+      - "8080:80"

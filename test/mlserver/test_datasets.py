@@ -6,8 +6,8 @@ from unittest.mock import MagicMock, create_autospec
 import pandas as pd
 from fastapi import HTTPException
 
-from ...datasets import DatasetService, DatasetValidator
-from ...persistence.repository import DatasetRepository, Dataset, InvalidDatasetIdException
+from mlserver.datasets import DatasetService, DatasetValidator
+from mlserver.persistence.repository import DatasetRepository, Dataset, InvalidDatasetIdException
 
 
 class TestDatasetService(unittest.TestCase):

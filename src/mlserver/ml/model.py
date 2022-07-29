@@ -17,21 +17,20 @@ class DecisionTreeModel:
             self.regressor = pickle.loads(__data=pickle_data)
         else:
             self.regressor = DecisionTreeRegressor(max_depth=2)
-        pass
 
     def fit_decision_tree(self, df: pd.DataFrame) -> DecisionTreeRegressor:
         """
-        Fit a DecissionTreeRegressor model using supplied dataframe.
-        'y' column is used as target vaules for fitting
+        Fit a DecisionTreeRegressor model using supplied dataframe.
+        'y' column is used as target values for fitting
         :param df:
-        :return: regressor - DecissionTreeRegressor object
+        :return: regressor - DecisionTreeRegressor object
         """
 
         X = df.drop("y", axis=1)
         y = df["y"]
 
         # Fit regression model
-        self.regressor.fit(X, y)
+        return self.regressor.fit(X, y)
 
     def predict(self, X):
         return self.regressor.predict(X)
@@ -41,7 +40,6 @@ class DecisionTreeModel:
 
 
 class MlService:
-
     def __init__(self, dataset_service: DatasetService = Depends(), model_repository: ModelRepository = Depends()):
         self.model_repository = model_repository
         self.dataset_service = dataset_service

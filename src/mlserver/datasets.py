@@ -33,7 +33,7 @@ class DatasetService:
         """
         Persist a new dataset, return new dataset id and version number
 
-        :param dataset_file: csv file containing the data to be persisted
+        :param: dataset_file: csv file containing the data to be persisted
         """
         df = self.validator.validate_and_read_csv(dataset_file)
 
@@ -45,8 +45,8 @@ class DatasetService:
         """
         Persist a new version of a dataset, return the new version number
 
-        :param dataset_id: id of persisted dataset
-        :param dataset_file: csv file containing the data to be persisted
+        :param: dataset_id: id of persisted dataset
+        :param: dataset_file: csv file containing the data to be persisted
         """
         try:
             df = self.validator.validate_and_read_csv(dataset_file)

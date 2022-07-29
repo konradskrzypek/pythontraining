@@ -4,11 +4,12 @@ from sqlalchemy import Column, Integer, LargeBinary
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Session
 
-from src.mlserver.persistence.engine import Base, engine
+from mlserver.persistence.engine import Base, engine
 
 
 class InvalidDatasetIdException(Exception):
     pass
+
 
 class Model(Base):
     __tablename__ = 'model'
@@ -20,6 +21,7 @@ class Model(Base):
 class Dataset(Base):
     __tablename__ = 'dataset'
     dataset_id = Column(UUID(as_uuid=True), primary_key=True)
+    #TODO: BUG - version_id is not limide to specific dataset_id, is not 1 for new dataset
     version_id = Column(Integer, primary_key=True, autoincrement=True)
     dataset_data = Column(LargeBinary)
     # __mapper_args__ = {
@@ -28,8 +30,8 @@ class Dataset(Base):
 
 
 class DatasetRepository:
-    def __init__(self, ):
-        pass;
+    def __init__(self):
+        pass
 
     def persist_new(self, dataset: Dataset) -> Dataset:
         with Session(engine) as session:
@@ -61,7 +63,7 @@ class DatasetRepository:
             )
             return dataset
 
-    def dataset_exists(selfself, session : Session, dataset_id : UUID) -> bool:
+    def dataset_exists(self, session : Session, dataset_id : UUID) -> bool:
         q = session.query(Dataset).filter(Dataset.dataset_id == dataset_id)
         return session.query(q.exists()).scalar()
 
@@ -89,5 +91,5 @@ class ModelRepository:
 
 # uncomment to reinitialize DB schema
 #
-Base.metadata.drop_all(engine)
-Base.metadata.create_all(engine)
+# Base.metadata.drop_all(engine)
+# Base.metadata.create_all(engine)
